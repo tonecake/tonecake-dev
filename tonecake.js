@@ -70,13 +70,15 @@ Tonecake.prototype.getChord = function ( key, type, seventh )
 }
 
 // return Object
-Tonecake.prototype.getDominant = function ()
+Tonecake.prototype.getDominant = function ( parentKey )
 {
+    return this.getChord( this.getKeynameByIndex( this.adjustKeyindex( this.getKeyindexByName( parentKey ) + 7 ) ), 'major')
 }
 
 // return Object
-Tonecake.prototype.getDiminish = function ()
+Tonecake.prototype.getDiminish = function ( parentKey )
 {
+    return this.getChord( this.getKeynameByIndex( this.adjustKeyindex( this.getKeyindexByName( parentKey ) + 11 ) ), 'diminish')
 }
 
 // functions...
@@ -106,9 +108,16 @@ Tonecake.prototype.getKeynameByIndex = function ( keyindex )
 // return number(int)
 Tonecake.prototype.adjustKeyindex = function( num )
 {
-    if( num > 11 ){
+    if( num > 23 )
+    {
+        return num - 24;
+    }
+    else if( num < 24 && num > 11 )
+    {
         return num - 12;
-    } else {
+    }
+    else
+    {
         return num;
     }
 }
