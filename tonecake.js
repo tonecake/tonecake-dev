@@ -50,11 +50,16 @@ Tonecake.prototype.getChord = function ( key, type, seventh )
         prefix = {
             "major": [0, 4, 7, 10, 11],
             "minor": [0, 3, 7, 10, 11],
-            "diminish": [0, 3, 6, 9],
-            "augment": [0, 4, 8, 10]
+            "diminish": [0, 3, 6, 9, 9],
+            "augment": [0, 4, 8, 10, 10]
         };
 
     return {
+        "root" : key,
+        "third" : this.getKeynameByIndex( this.adjustKeyindex( this.getKeyindexByName( key ) + prefix[type][1] ) ),
+        "fifth" : this.getKeynameByIndex( this.adjustKeyindex( this.getKeyindexByName( key ) + prefix[type][2] ) ),
+        "seventh" : this.getKeynameByIndex( this.adjustKeyindex( this.getKeyindexByName( key ) + prefix[type][3] ) ),
+        "major seventh" : this.getKeynameByIndex( this.adjustKeyindex( this.getKeyindexByName( key ) + prefix[type][4] ) )
     };
 }
 
@@ -77,7 +82,7 @@ Tonecake.prototype.getKeyindexByName = function ( keyname )
 
     for ( var i=0; key.length>i; i++ )
     {
-        if ( key[i].name === tone )
+        if ( key[i].name === keyname )
         {
             return key[i].index;
             break;
@@ -101,6 +106,3 @@ Tonecake.prototype.adjustKeyindex = function( num )
         return num;
     }
 }
-
-
-Tonecake.rules = [['a','b'],[1,2]];
