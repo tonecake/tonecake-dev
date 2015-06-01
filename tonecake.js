@@ -81,8 +81,7 @@ Tonecake.prototype.getDiminish = function ( parentKey )
     return this.getChord( this.getKeynameByIndex( this.adjustKeyindex( this.getKeyindexByName( parentKey ) + 11 ) ), 'diminish')
 }
 
-// functions...
-
+//
 // return number(int)
 Tonecake.prototype.getKeyindexByName = function ( keyname )
 {
