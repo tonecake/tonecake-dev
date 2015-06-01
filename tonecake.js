@@ -30,7 +30,7 @@ Tonecake.prototype.getScale = function ( tonality )
         var tonality = this.key + ' ' + this.tonality
     }
 
-    var flatScales = ['f major', 'd minor', 'b- major', 'g minor', 'e- major', 'c minor', 'a- major', 'f minor', 'd- major', 'b- minor', 'g- major', 'e- minor', 'c- major', 'a- minor'];
+    var flatScales = ['f major', 'd minor', 'b- major', 'g minor', 'e- major', 'c minor', 'a- major', 'f minor', 'd- major', 'b- minor', 'g- major', 'e- minor'];
 
     for( var i=0; flatScales.length>i; i++ )
     {
@@ -47,6 +47,7 @@ Tonecake.prototype.getScale = function ( tonality )
 Tonecake.prototype.getChord = function ( key, type, seventh )
 {
     var chord,
+        seventhChord,
         prefix = {
             "major": [0, 4, 7, 10, 11],
             "minor": [0, 3, 7, 10, 11],
@@ -54,12 +55,17 @@ Tonecake.prototype.getChord = function ( key, type, seventh )
             "augment": [0, 4, 8, 10, 10]
         };
 
+    if( seventh === 'major' )
+    {
+        seventhChord = this.getKeynameByIndex( this.adjustKeyindex( this.getKeyindexByName( key ) + prefix[type][4] ) );
+    } else {
+        seventhChord = this.getKeynameByIndex( this.adjustKeyindex( this.getKeyindexByName( key ) + prefix[type][3] ) );
+    }
     return {
         "root" : key,
         "third" : this.getKeynameByIndex( this.adjustKeyindex( this.getKeyindexByName( key ) + prefix[type][1] ) ),
         "fifth" : this.getKeynameByIndex( this.adjustKeyindex( this.getKeyindexByName( key ) + prefix[type][2] ) ),
-        "seventh" : this.getKeynameByIndex( this.adjustKeyindex( this.getKeyindexByName( key ) + prefix[type][3] ) ),
-        "major seventh" : this.getKeynameByIndex( this.adjustKeyindex( this.getKeyindexByName( key ) + prefix[type][4] ) )
+        "seventh" : seventhChord
     };
 }
 
