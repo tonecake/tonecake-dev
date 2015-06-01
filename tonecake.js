@@ -17,9 +17,38 @@ var Tonecake = function ( option )
 // return 7 Objects in Array
 Tonecake.prototype.harmony = function ()
 {
-    var t, sp, dp, s, d, tp, d7;
+    var result = new Array();
 
+    var set = {"major":[{"name":"t","tonality":"major","seventh":"major","interval":0},{"name":"sp","tonality":"minor","interval":2},{"name":"dp","tonality":"minor","interval":4},{"name":"s","tonality":"major","seventh":"major","interval":5},{"name":"d","tonality":"major","interval":7},{"name":"tp","tonality":"minor","interval":9},{"name":"d-","tonality":"diminish","interval":11}],"minor":[{"name":"t","tonality":"minor","interval":0},{"name":"d-","tonality":"diminish","interval":2},{"name":"tp","tonality":"major","seventh":"major","interval":3},{"name":"s","tonality":"minor","interval":5},{"name":"d","tonality":"major","interval":7},{"name":"sp","tonality":"major","seventh":"major","interval":8},{"name":"dp","tonality":"major","interval":10}]}
 
+    if ( this.tonality === 'major' )
+    {
+        set = set.major;
+    } else {
+        set = set.minor;
+    }
+
+    for( var i=0; i<set.length; i++ )
+    {
+        var seventh;
+
+        if ( set[i].seventh === 'major' )
+        {
+            seventh = 'major';
+        } else {
+            seventh = undefined;
+        }
+
+        var resultPart = {
+            "name" : set[i].name,
+            "tonality" : this.getKeynameByIndex( this.adjustKeyindex( this.getKeyindexByName( this.key ) + set[i].interval ) ) + ' ' + set[i].tonality,
+            "chord" : this.getChord( this.getKeynameByIndex( this.adjustKeyindex( this.getKeyindexByName( this.key ) + set[i].interval ) ), set[i].tonality, seventh ),
+            "dominant" : this.getDominant( this.getKeynameByIndex( this.adjustKeyindex( this.getKeyindexByName( this.key ) ) ) ),
+            "diminishedDominant" : this.getDiminish( this.getKeynameByIndex( this.adjustKeyindex( this.getKeyindexByName( this.key ) ) ) )
+        };
+        result.push(resultPart);
+    }
+    return result;
 }
 
 // return Object
