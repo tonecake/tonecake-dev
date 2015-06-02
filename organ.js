@@ -15,8 +15,13 @@ var Organ = function( option )
     this.defaultVolumne = 0.05;
     this.channel = option.channel
     this.frequency = rule.frequency; // 외부라이브러리에 종속적임.. 패치요망..
+
+    // create and start Audio Context
+    this.created = this.create();
+    this.started = this.start();
 }
 
+// return boolean
 Organ.prototype.create = function()
 {
     var organContext = this.context();
@@ -32,8 +37,11 @@ Organ.prototype.create = function()
         this.structure.osc[i].connect(this.structure.gainNode[i]);
         this.structure.gainNode[i].connect(organContext.destination);
     }
+
+    return true;
 }
 
+// return boolean
 Organ.prototype.start = function()
 {
     if( this.structure.osc.length === 0 )
@@ -45,6 +53,8 @@ Organ.prototype.start = function()
         this.structure.osc[i].frequency.value = this.defaultFrequency;
         this.structure.osc[i].start(this.info.startTime);
     }
+
+    return true;
 }
 
 // return Object or false
