@@ -63,8 +63,20 @@ Organ.prototype.context = function()
     }
 }
 
-Organ.prototype.setFrequency = function()
+// return undefined, value(int or array), node(int)
+Organ.prototype.setFrequency = function( value, node )
 {
+    if( typeof value === 'string' && node != undefined )
+    {
+        this.structure.osc[node].frequency.value = value;
+    }
+    else if( typeof value === 'object' )
+    {
+        for( var i=0; i<this.structure.osc.length; i++ )
+        {
+            this.structure.osc[i].frequency.value = value[i];
+        }
+    }
 }
 
 // return undefined, value(int), node(int)
