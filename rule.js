@@ -87,6 +87,10 @@ var rule = {
             "freq": 442
         },
         {
+            "name": "A#",
+            "freq": 468.28
+        },
+        {
             "name": "Bb",
             "freq": 468.28
         },

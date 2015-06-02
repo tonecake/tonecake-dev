@@ -97,15 +97,19 @@ Organ.prototype.setVolume = function( value, node )
     }
 }
 
+// return a ferquency(int)
 Organ.prototype.getFrequency = function( key, octave )
 {
     if( !key || !octave )
     {
-        return false
+        return 0; // 조금 엄격한 룰을 적용하면 false로 해야하나, 유연한 환경을 위한다면 0으로 설정한다.
     }
     if( octave > 8 )
     {
         octave = 8;
+    }
+    if( typeof octave === 'string' ){
+        octave = parseInt(octave);
     }
 
     var freq;
@@ -117,8 +121,6 @@ Organ.prototype.getFrequency = function( key, octave )
             freq = this.frequency[i].freq;
         }
     }
-
-    console.log(freq);
 
     switch( octave ){
         case 0 :
