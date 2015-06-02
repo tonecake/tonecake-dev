@@ -59,17 +59,17 @@ Tonecake.prototype.getScale = function ( tonality )
         var tonality = this.key + ' ' + this.tonality
     }
 
-    var flatScales = ['f major', 'd minor', 'b- major', 'g minor', 'e- major', 'c minor', 'a- major', 'f minor', 'd- major', 'b- minor', 'g- major', 'e- minor'];
+    var flatScales = ['F major', 'D minor', 'Bb major', 'G minor', 'Eb major', 'C minor', 'Ab major', 'F minor', 'Db major', 'Bb minor', 'Gb major', 'Eb minor'];
 
     for( var i=0; flatScales.length>i; i++ )
     {
         if( flatScales[i] === tonality )
         {
-            return ['c','d-','d','e-','e','f','g-','g','a-','a','b-','b'];
+            return ['C','Db','D','Eb','E','F','Gb','G','Ab','A','Bb','B'];
             break;
         }
     }
-    return ['c','c+','d','d+','e','f','f+','g','g+','a','a+','b'];
+    return ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
 }
 
 // return Object
@@ -114,7 +114,7 @@ Tonecake.prototype.getDiminish = function ( parentKey )
 // return number(int)
 Tonecake.prototype.getKeyindexByName = function ( keyname )
 {
-    var key = [{"name":"c","index":0},{"name":"c+","index":1},{"number":"d-","index":1},{"name":"d","index":2},{"name":"d+","index":3},{"amer":"e-","index":3},{"name":"e","index":4},{"name":"f","index":5},{"name":"f+","index":6},{"name":"g-","index":6},{"name":"g","index":7},{"name":"g+","index":8},{"name":"a-","index":8},{"name":"a","index":9},{"name":"b-","index":10},{"name":"a+","index":10},{"name":"b","index":11},{"name":"c-","index":11}];
+    var key = [{"name":"C","index":0},{"name":"C#","index":1},{"number":"Db","index":1},{"name":"D","index":2},{"name":"D#","index":3},{"amer":"Eb","index":3},{"name":"E","index":4},{"name":"F","index":5},{"name":"F#","index":6},{"name":"Gb","index":6},{"name":"G","index":7},{"name":"G#","index":8},{"name":"Ab","index":8},{"name":"A","index":9},{"name":"Bb","index":10},{"name":"A#","index":10},{"name":"B","index":11},{"name":"Cb","index":11}];
 
     for ( var i=0; key.length>i; i++ )
     {
