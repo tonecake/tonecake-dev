@@ -7,15 +7,15 @@ var Tonecake = function ( option )
         return false;
     }
 
-    this.info = new Object();
+    this.created = true;
     this.key = option.key;
     this.tonality = option.tonality;
     this.scale = this.getScale();
-
+    this.harmony = this.getHarmony();
 }
 
 // return 7 Objects in Array
-Tonecake.prototype.harmony = function ()
+Tonecake.prototype.getHarmony = function ()
 {
     var result = new Array();
 
