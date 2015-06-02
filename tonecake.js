@@ -14,6 +14,8 @@ var Tonecake = function ( option )
     this.tonality = option.tonality;
     this.rule = rule; // NOTE: 외부 파일에 의존적, 모듈화 해야함...
     this.scale = this.getScale();
+
+    // make harmony
     this.harmony = this.getHarmony();
 }
 
