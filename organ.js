@@ -13,6 +13,7 @@ var Organ = function( option )
     this.defaultFrequency = 0;
     this.defaultVolumne = 0.05;
     this.channel = option.channel
+    this.frequency = rule.frequency; // 외부라이브러리에 종속적임.. 패치요망..
 }
 
 Organ.prototype.create = function()
@@ -93,4 +94,54 @@ Organ.prototype.setVolume = function( value, node )
             this.structure.gainNode[i].gain.value = value;
         }
     }
+}
+
+Organ.prototype.getFrequency = function( key, octave )
+{
+    if( !key || !octave )
+    {
+        return false
+    }
+    if( octave > 8 )
+    {
+        octave = 8;
+    }
+
+    var freq;
+
+    for( var i=0; i<this.frequency.length; i++ )
+    {
+        if( this.frequency[i].name === key
+        {
+            freq = frequency[i].freq;
+        }
+    }
+
+    switch( octave ){
+        case '0' :
+            return freq / 16;
+            break;
+        case '1' :
+            return freq / 8;
+            break;
+        case '2' :
+            return freq / 4;
+            break;
+        case '3' :
+            return freq / 2;
+            break;
+        case '4' :
+            return freq;
+            break;
+        case '5' :
+            return freq * 2
+            break;
+        case '6' :
+            return freq * 4
+            break;
+        case '7' :
+            return freq * 8
+            break;
+        case '8' :
+            return freq * 16
 }

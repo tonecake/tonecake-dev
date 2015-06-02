@@ -29,6 +29,76 @@ var rule = {
             10
         ]
     },
+    "frequency" :
+        {
+            "name": "C",
+            "freq": 262.81
+        },
+        {
+            "name": "C#",
+            "freq": 278.44
+        },
+        {
+            "name": "Db",
+            "freq": 278.44
+        },
+        {
+            "name": "D",
+            "freq": 295
+        },
+        {
+            "name": "D#",
+            "freq": 312.54
+        },
+        {
+            "name": "Eb",
+            "freq": 312.54
+        },
+        {
+            "name": "E",
+            "freq": 331.13
+        },
+        {
+            "name": "F",
+            "freq": 350.82
+        },
+        {
+            "name": "F#",
+            "freq": 371.68
+        },
+        {
+            "name": "Gb",
+            "freq": 371.68
+        },
+        {
+            "name": "G",
+            "freq": 393.78
+        },
+        {
+            "name": "G#",
+            "freq": 417.19
+        },
+        {
+            "name": "Ab",
+            "freq": 417.19
+        },
+        {
+            "name": "A",
+            "freq": 442
+        },
+        {
+            "name": "Bb",
+            "freq": 468.28
+        },
+        {
+            "name": "B",
+            "freq": 496.13
+        },
+        {
+            "name": "Cb",
+            "freq": 496.13
+        }
+    ],
     "keyIndex": [
         {
             "name": "C",
