@@ -4,7 +4,9 @@ var Tonecake = function ( option )
 {
     if( !option )
     {
-        return false;
+        option = new Object();
+        option.key = 'C';
+        option.tonality = 'major';
     }
 
     this.created = true;
@@ -78,7 +80,7 @@ Tonecake.prototype.getChord = function ( key, type, seventh )
 {
     var chord,
         seventhChord,
-        prefix = this.rule.codePrefix;
+        prefix = this.rule.chordPrefix;
 
     if( seventh === 'major' )
     {
