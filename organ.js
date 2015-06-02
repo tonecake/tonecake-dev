@@ -5,6 +5,7 @@ var Organ = function( option )
 {
     if( !option || !option.type )
     {
+        option = new Object();
         option.channel = 4;
     }
 
@@ -111,37 +112,40 @@ Organ.prototype.getFrequency = function( key, octave )
 
     for( var i=0; i<this.frequency.length; i++ )
     {
-        if( this.frequency[i].name === key
+        if( this.frequency[i].name === key )
         {
-            freq = frequency[i].freq;
+            freq = this.frequency[i].freq;
         }
     }
 
+    console.log(freq);
+
     switch( octave ){
-        case '0' :
+        case 0 :
             return freq / 16;
             break;
-        case '1' :
+        case 1 :
             return freq / 8;
             break;
-        case '2' :
+        case 2 :
             return freq / 4;
             break;
-        case '3' :
+        case 3 :
             return freq / 2;
             break;
-        case '4' :
+        case 4 :
             return freq;
             break;
-        case '5' :
+        case 5 :
             return freq * 2
             break;
-        case '6' :
+        case 6 :
             return freq * 4
             break;
-        case '7' :
+        case 7 :
             return freq * 8
             break;
-        case '8' :
+        case 8 :
             return freq * 16
+    }
 }

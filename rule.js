@@ -29,7 +29,7 @@ var rule = {
             10
         ]
     },
-    "frequency" :
+    "frequency" : [
         {
             "name": "C",
             "freq": 262.81
