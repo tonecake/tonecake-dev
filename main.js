@@ -2,7 +2,7 @@
 
 require.config({ urlArgs: "v=" +  (new Date()).getTime() });
 
-requirejs(['rule', 'tonecake']);
+requirejs(['rule', 'tonecake', 'organ']);
 
 //function setup()
 //{

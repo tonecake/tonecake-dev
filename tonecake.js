@@ -10,7 +10,7 @@ var Tonecake = function ( option )
     this.created = true;
     this.key = option.key;
     this.tonality = option.tonality;
-    this.rule = rule; // NOTE: 모듈방식으로 변경해야함
+    this.rule = rule; // NOTE: 외부 파일에 의존적, 모듈화 해야함...
     this.scale = this.getScale();
     this.harmony = this.getHarmony();
 }
