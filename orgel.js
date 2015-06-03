@@ -99,7 +99,7 @@ Orgel.prototype.mute = function(){
 }
 
 // return undefined, value(int or array), node(int)
-Orgel.prototype.setFrequency = Orgel.prototype.setFreq = function( value, node )
+Orgel.prototype.setFreq = function( value, node )
 {
     if( typeof value === 'string' && node != undefined )
     {
@@ -124,8 +124,19 @@ Orgel.prototype.setFrequency = Orgel.prototype.setFreq = function( value, node )
     }
 }
 
+// return undefined
+Orgel.prototype.resetFreq = function()
+{
+    this.setFreq([
+        this.defaultFrequency,
+        this.defaultFrequency,
+        this.defaultFrequency,
+        this.defaultFrequency
+    ]);
+}
+
 // return a ferquency(int)
-Orgel.prototype.getFrequency = Orgel.prototype.getFreq = function( key, octave )
+Orgel.prototype.getFreq = function( key, octave )
 {
     if( !key || !octave )
     {
