@@ -75,22 +75,6 @@ Organ.prototype.context = function()
     }
 }
 
-// return undefined, value(int or array), node(int)
-Organ.prototype.setFrequency = function( value, node )
-{
-    if( typeof value === 'string' && node != undefined )
-    {
-        this.structure.osc[node].frequency.value = value;
-    }
-    else if( typeof value === 'object' )
-    {
-        for( var i=0; i<this.structure.osc.length; i++ )
-        {
-            this.structure.osc[i].frequency.value = value[i];
-        }
-    }
-}
-
 // return undefined, value(int), node(int)
 Organ.prototype.setVolume = function( value, node )
 {
@@ -107,8 +91,41 @@ Organ.prototype.setVolume = function( value, node )
     }
 }
 
+Organ.prototype.mute = function(){
+    for( var i=0; i<this.structure.gainNode.length; i++ )
+    {
+        this.structure.gainNode[i].gain.value = 0;
+    }
+}
+
+// return undefined, value(int or array), node(int)
+Organ.prototype.setFrequency = Organ.prototype.setFreq = function( value, node )
+{
+    if( typeof value === 'string' && node != undefined )
+    {
+        this.structure.osc[node].frequency.value = value;
+    }
+    else if( typeof value === 'object' )
+    {
+        for( var i=0; i<this.structure.osc.length; i++ )
+        {
+            if( typeof value[i] === 'number' )
+            {
+                this.structure.osc[i].frequency.value = value[i];
+            }
+            else
+            {
+                var key = value[i].substr(0, value[i].length-1);
+                var octave = value[i].substr(value[i].length-1);
+
+                this.structure.osc[i].frequency.value = this.getFreq(key, octave);
+            }
+        }
+    }
+}
+
 // return a ferquency(int)
-Organ.prototype.getFrequency = function( key, octave )
+Organ.prototype.getFrequency = Organ.prototype.getFreq = function( key, octave )
 {
     if( !key || !octave )
     {
