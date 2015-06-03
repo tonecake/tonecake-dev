@@ -22,7 +22,7 @@ var Orgel = function( option )
 }
 
 // return boolean
-Organ.prototype.create = function()
+Orgel.prototype.create = function()
 {
     var organContext = this.context();
     this.info.startTime = organContext.currentTime;
@@ -42,7 +42,7 @@ Organ.prototype.create = function()
 }
 
 // return boolean
-Organ.prototype.start = function()
+Orgel.prototype.start = function()
 {
     if( this.structure.osc.length === 0 )
     {
@@ -58,7 +58,7 @@ Organ.prototype.start = function()
 }
 
 // return Object or false
-Organ.prototype.context = function()
+Orgel.prototype.context = function()
 {
     var context = (window.AudioContext
                 || window.webkitAudioContext
@@ -76,7 +76,7 @@ Organ.prototype.context = function()
 }
 
 // return undefined, value(int), node(int)
-Organ.prototype.setVolume = function( value, node )
+Orgel.prototype.setVolume = function( value, node )
 {
     if( node != undefined )
     {
@@ -91,7 +91,7 @@ Organ.prototype.setVolume = function( value, node )
     }
 }
 
-Organ.prototype.mute = function(){
+Orgel.prototype.mute = function(){
     for( var i=0; i<this.structure.gainNode.length; i++ )
     {
         this.structure.gainNode[i].gain.value = 0;
@@ -99,7 +99,7 @@ Organ.prototype.mute = function(){
 }
 
 // return undefined, value(int or array), node(int)
-Organ.prototype.setFrequency = Organ.prototype.setFreq = function( value, node )
+Orgel.prototype.setFrequency = Organ.prototype.setFreq = function( value, node )
 {
     if( typeof value === 'string' && node != undefined )
     {
@@ -125,7 +125,7 @@ Organ.prototype.setFrequency = Organ.prototype.setFreq = function( value, node )
 }
 
 // return a ferquency(int)
-Organ.prototype.getFrequency = Organ.prototype.getFreq = function( key, octave )
+Orgel.prototype.getFrequency = Organ.prototype.getFreq = function( key, octave )
 {
     if( !key || !octave )
     {
