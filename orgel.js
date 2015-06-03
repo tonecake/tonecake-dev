@@ -1,7 +1,7 @@
 // JavaScript Document
 // Audio Context Library for Tonecake™
 
-var Organ = function( option )
+var Orgel = function( option )
 {
     if( !option || !option.type )
     {
