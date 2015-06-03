@@ -99,7 +99,7 @@ Orgel.prototype.mute = function(){
 }
 
 // return undefined, value(int or array), node(int)
-Orgel.prototype.setFrequency = Organ.prototype.setFreq = function( value, node )
+Orgel.prototype.setFrequency = Orgel.prototype.setFreq = function( value, node )
 {
     if( typeof value === 'string' && node != undefined )
     {
@@ -125,7 +125,7 @@ Orgel.prototype.setFrequency = Organ.prototype.setFreq = function( value, node )
 }
 
 // return a ferquency(int)
-Orgel.prototype.getFrequency = Organ.prototype.getFreq = function( key, octave )
+Orgel.prototype.getFrequency = Orgel.prototype.getFreq = function( key, octave )
 {
     if( !key || !octave )
     {
